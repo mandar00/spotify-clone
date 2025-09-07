@@ -22,5 +22,11 @@ export const requireAdmin = async (req: any, res: any, next: any) => {
     }
     next()
   } catch (error) {
+    console.log("Error in checking admin", error);
+    next(error)
   }
+}
+
+export const checkAdmin = (req:Request,res:Response)=>{
+  res.status(200).json({admin:true})
 }

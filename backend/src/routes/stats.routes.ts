@@ -1,10 +1,9 @@
 import { Router } from "express";
 const router = Router()
-import type { Request, Response } from "express";
+import {getStats} from "../controller/stats.controller"
+import { protectRoute, requireAdmin } from "../middleware/auth.middleware";
 
-router.get("/", (req: Request, res: Response) => {
-  res.send("stats route")
-})
+router.get("/",protectRoute,requireAdmin, getStats )
 
 
 export default router

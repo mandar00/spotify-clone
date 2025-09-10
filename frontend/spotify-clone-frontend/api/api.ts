@@ -18,6 +18,10 @@ const api = axios.create({
     },
 });
 
+export const updateApiToken = (token:string|null)=>{
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+}
+
 // API wrapper functions
 export const apiWrapper = {
     get: async (url:string, config = {}) => {
